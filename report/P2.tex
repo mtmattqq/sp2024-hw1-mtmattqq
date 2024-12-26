@@ -1,0 +1,9 @@
+\section{Starvation}
+
+\subsection{What is Starvation}
+
+Starvation is a condition where the process want a write lock (or other shared resources), but other processes are holding the read lock (or the specific resource this process needs). The process will be blocked until the read lock is released (or the resource is available). However, if more and more read locks are acquired (or other process doesn't release the resource), the process will be blocked forever.
+
+\subsection{Possibility having Starvation}
+
+Yes, it is possible to have starvation in the assignment. For example, if the read server is holding the read lock, and the write server is asking for the write lock, the write server will be blocked until the read server releases the read lock. However, if the read server keeps holding the read lock, the write server will be blocked forever.

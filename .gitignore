@@ -1,0 +1,4 @@
+.venv/*
+slow-client/target/*
+write_server
+read_server

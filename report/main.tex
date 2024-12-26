@@ -1,0 +1,239 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[margin=3cm]{geometry} % 上下左右距離邊緣2cm
+\usepackage{amsmath,amsthm,amssymb} % 引入 AMS 數學環境
+\usepackage{yhmath}      % math symbol
+\usepackage{graphicx}    % 圖形插入用
+\usepackage{fontspec}    % 加這個就可以設定字體
+\usepackage{type1cm}	 % 設定fontsize用
+\usepackage{titlesec}   % 設定section等的字體
+\usepackage{titling}    % 加強 title 功能
+\usepackage{fancyhdr}   % 頁首頁尾
+\usepackage{tabularx}   % 加強版 tableS
+\usepackage[square, comma, numbers, super, sort&compress]{natbib}  % cite加強版
+\usepackage[unicode=true, pdfborder={0 0 0}, bookmarksdepth=-1]{hyperref}  % ref加強版
+\usepackage[usenames, dvipsnames]{color}  % 可以使用顏色
+\usepackage{enumerate}  % 加強版enumerate
+\usepackage[CJKmath=true,AutoFakeBold=3,AutoFakeSlant=.2]{xeCJK}      % 中文
+\usepackage[normalem]{ulem}
+\usepackage{cancel}
+\usepackage{indentfirst}
+\usepackage{bbm}
+\usepackage{pifont}
+\usepackage{pgfplots}
+\usepackage{asymptote}
+\usepackage{wrapfig}
+
+\usepackage{tikz} %畫圖
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{calc,shadows,patterns,angles,quotes}
+\usetikzlibrary{datavisualization.formats.functions}
+\usepackage{pgfplots}
+
+\usepackage{setspace} % spacing
+\usepackage{comment} % comment
+\usepackage[shortlabels, inline]{enumitem} \setenumerate[0]{label=(\Alph*)}
+\usepackage{esvect}
+
+\usepackage{mdframed}
+
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\setCJKmainfont{AR PL KaitiM Big5}
+\setCJKsansfont{AR PL KaitiM Big5}
+\setCJKmonofont{AR PL KaitiM Big5}
+%\setCJKmainfont[AutoFakeBold=3,AutoFakeSlant=.4]{標楷體}
+\defaultCJKfontfeatures{AutoFakeBold=3,AutoFakeSlant=.4}
+\newCJKfontfamily\Kai{標楷體}
+\newCJKfontfamily\Hei{微軟正黑體}
+\newCJKfontfamily\NewMing{新細明體}
+%AR PL KaitiM Big5
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+
+\setlength{\headheight}{15pt}  
+\setlength{\droptitle}{-1.5cm} 
+% \parindent=24pt 
+
+\renewcommand{\abstractname}{\LARGE Abstract}
+
+% new commands: %
+
+\newcommand{\np}[1]{\\[{#1}] \indent}
+\newcommand{\transpose}[1]{{#1}^\mathrm{T}}
+\newcommand{\adj}{\mathrm{adj}}
+\newcommand{\degree}{^\circ}
+\newcommand{\Arc}[1]{\wideparen{{#1}}}
+\newcommand{\Line}[1]{\overleftrightarrow{{#1}}}
+\newcommand{\Ray}[1]{\overrightarrow{{#1}}}
+\newcommand{\Segment}[1]{\overline{{#1}}}
+\newcommand{\mangle}[1]{\measuredangle{#1}}
+\newcommand{\defeq}{\mathrel{\mathop:}=}
+\newcommand{\ord}{\text{ord}}
+\newcommand{\sym}{\text{sym}}
+\newcommand{\cyc}{\text{cyc}}
+\newcommand{\crossratio}[5]{{#1}\left({#2},{#3};{#4},{#5}\right)}
+\newcommand{\pow}[2]{\textbf{Pow}_{#1}{\left(#2\right)}}
+\newcommand{\vp}[2]{\nu_{#1}\left(#2\right)}
+
+\newcommand{\resetcounters}
+    {
+    \setcounter{section}{0}
+    %\setcounter{ans}{0}
+    \setcounter{ax}{0}
+    \setcounter{cl}{0}
+    \setcounter{con}{0}
+    \setcounter{clm}{0}
+    \setcounter{df}{0}
+    \setcounter{ex}{0}
+    \setcounter{exs}{0}
+    \setcounter{lm}{0}
+    \setcounter{pr}{0}
+    \setcounter{pp}{0}
+    \setcounter{prop}{0}
+    %\setcounter{rem}{0}
+    \setcounter{thm}{0}
+    %\setcounter{sol}{0}
+    }
+\renewcommand{\proofname}{\textbf{P\footnotesize{ROOF}\normalsize}} %修改Proof 標頭
+\newtheoremstyle{mystyle}
+  {6pt}{15pt}
+  {}
+  {}
+  {\bf}
+  {.}
+  {0.5em}
+  {}
+\theoremstyle{mystyle}
+%中文版
+% \newtheorem*{ans}{答案}%[section] %答案
+% \newtheorem{ax}{公理}[section] %公理
+% \newtheorem{cl}{推論}[section] %推論
+% \newtheorem{con}{結論}[section] %結論
+% \newtheorem{clm}{宣稱}[section] %主張,聲稱
+% \newtheorem{df}{定義}[section] %定義
+% \newtheorem{ex}{例題}[section] %例題
+% \newtheorem{exs}{習題}[section] %習題
+% \newtheorem{lm}{引理}[section] %引理
+% \newtheorem{pr}{題目}[section] %題目
+% \newtheorem{pp}{性質}[section] %性質
+% \newtheorem{prop}{命題}[section] %命題
+% \newtheorem*{rem}{註} %備註
+% \newtheorem{thm}{定理}[section] %定理
+% \newtheorem*{sol}{解}%[section]%解
+% \newtheorem{cs}{Case}%[section]%不支援中文
+% \newtheorem*{anal}{解析}%[section]%解析
+
+% 英文版
+\newtheorem*{ans}{A\footnotesize{NSWER} \normalsize}%[section] %答案
+\newtheorem{ax}{Axiom}[section] %公理
+\newtheorem{cl}{C\footnotesize{OROLLARY} \normalsize}[section] %推論
+\newtheorem{con}{C\footnotesize{ONCLUSION} \normalsize}[section] %結論
+\newtheorem*{claim}{C\footnotesize{LAIM} \normalsize} %主張,聲稱
+\newtheorem{df}{D\footnotesize{EFINITION} \normalsize}[section] %定義
+\newtheorem{ex}{E\footnotesize{XAMPLE} \normalsize}[section] %例題
+\newtheorem{exs}{E\footnotesize{XERCISE} \normalsize}[section] %習題
+\newtheorem{lm}{L\footnotesize{EMMA} \normalsize}[section] %引理
+\newtheorem{pr}{P\footnotesize{ROBLEM} \normalsize}[section] %問題
+\newtheorem{pp}{P\footnotesize{ROPERTY} \normalsize}[section] %性質
+\newtheorem{prop}{P\footnotesize{ROPOSITION} \normalsize}[section] %提議
+\newtheorem*{rem}{Remark} %備註
+\newtheorem{thm}{T\footnotesize{HEOREM} \normalsize}[section] %定理
+\newtheorem*{sol}{S\footnotesize{OLUTION} \normalsize}%[section]
+\newtheorem{cs}{C\footnotesize{ASE} \normalsize}%[section]
+
+\newcommand*{\st}{\mbox{ such that }}
+\newcommand*{\N}{\mathbb{N}}
+\newcommand*{\Z}{\mathbb{Z}}
+\newcommand*{\Q}{\mathbb{Q}}
+\newcommand*{\R}{\mathbb{R}}
+\newcommand*{\C}{\mathbb{C}}
+\newcommand*{\F}{\mathbb{F}}
+\newcommand{\summ}[3]{\sum\limits_{#1}^{#2}{#3}}
+
+%%%Code listing%%%
+\usepackage{listings}
+\definecolor{codered}{rgb}{0.98,0.54,0.4}
+\definecolor{codegreen}{rgb}{0,0.8,0.5}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{1, 1, 1}
+\definecolor{codeblue}{rgb}{0,0.5,0.8}
+
+\lstdefinelanguage{Pseudo}{
+  sensitive = true,
+  keywords = {},
+  % otherkeywords={% Operators
+  %   >, <, ==, <=, >=, ->, <-, +, -, *, \%, true, false, =, ',', '(', ')', NIL, 1, 2, 3, 4, 5, 6, 7. 8. 9. 0, not, and
+  % },
+  keywords = [2]{Algorithm, for, while, do, to, if, else, then, break, continue, return, new},
+  keywords = [3]{RbTree, Tree, List, Array, bool, int},
+  %ndkeywords={int, \char{}  },
+  %ndkeywordstyle=\color{blue}\bfseries,
+  % morekeywords=[2]{>, <, ==, <=, >=, ->},
+  keywordstyle=[2]\color{codeblue},
+  keywordstyle=[3]\color{codered},
+  numbers=left,
+  % numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=top,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstdefinestyle{codeStyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegray},
+    keywordstyle=\color{codepurple}\bffamily,
+    numberstyle=\color{black},
+    stringstyle=\color{red!85!black},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt, 
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=4,
+    frame=single
+}
+
+\lstset{language=Pseudo, style=codeStyle, frameround=tttt}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+\author{ShangJhe Li}
+\lhead{SP}
+\chead{Homework 2}
+\rhead{B12903033}
+\lfoot{Author: \theauthor}
+\cfoot{\thepage}
+\rfoot{\rightmark}
+
+\pagestyle{fancy}
+\begin{center}
+  {\Huge \bf Homework 2 Report}\\[8pt]
+  \textbf{Student Name and ID:} B12902033 \theauthor\\
+  
+\end{center}
+
+\input{P1}
+\input{P2}
+\input{P3}
+\input{P4}
+
+\end{document}

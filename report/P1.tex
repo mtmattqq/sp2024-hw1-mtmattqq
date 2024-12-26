@@ -1,0 +1,10 @@
+\section{Busy waiting}
+
+\subsection{What is Busy Waiting}
+The computer is busy waiting when it is doing nothing but checking whether it should wait or there's something to do. That is, in this case, the computer is doing nothing but checking whether there is connection or data to read.
+
+\subsection{How to avoid}
+I use select() and poll() to avoid busy waiting. They are system calls that block for a time until there is connection or data to read or timeout.
+
+\subsection{Possibility having Busy Waiting with select()/poll()}
+It is possible to have busy waiting with select() and poll() if the timeout is set to 0, or less than the CPU time required for checking all the incomming data are ready or not. However, in this case, 10ms is much more than enough for the CPU to check all incomming data are ready or not (\verb|MAX_CONNECTION = 1024|). Therefore, busy waiting is avoided.
